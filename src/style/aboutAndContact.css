@@ -1,0 +1,118 @@
+.info {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 99px;
+  padding: 15px;
+  border-radius: 15px;
+  width: max-content;
+  height: auto;
+  background: #e4e9f7;
+
+  opacity: 0;
+  z-index: -11;
+  overflow-y: auto;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.info h2,
+.info div {
+  margin: 0;
+  padding-top: 10px;
+}
+
+.info button{
+  margin-top: 15px;
+}
+
+
+
+.about {
+  position: fixed;
+  top: calc(50% + 10px);
+  transform: translateY(-50%);
+  padding: 15px;
+  border-radius: 15px;
+ width: fit-content;
+ left: 99px;
+  z-index: -90;
+  background: #e4e9f7;
+  height: 70vh;
+  opacity: 0;
+  overflow-y: auto;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.contact {
+  position: fixed;
+  top: calc(50% + 10px);
+  left: 99px;
+  opacity: 0;
+  transform: translateY(-50%);
+  padding: 15px;
+  border-radius: 15px;
+  width: max-content;
+  z-index: -90;
+  background: #e4e9f7;
+  height: 70vh;
+  overflow-y: auto;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+}
+.aboutus-title {
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: 32px;
+  margin: 0 0 39px;
+  padding: 0 0 11px;
+  position: relative;
+  text-transform: uppercase;
+  color: #11101d;
+  user-select: none;
+}
+.aboutus-title::after {
+  background: #ed1c1b none repeat scroll 0 0;
+  bottom: 0;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 54px;
+}
+.aboutus-text {
+  color: #2b2b2b;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 0 0 35px;
+}
+
+.c_intro a {
+  text-decoration: none;
+  color: #11101d;
+}
+
+.topOfTheLine {
+  z-index: 50;
+  opacity: 1;
+}
+
+@media (max-width: 450px) {
+  .info,
+  .contact,
+  .about {
+    width: calc(100% - 80px);
+    left: 65px;
+  }
+
+  .info h2{
+    font-size: 1.2rem;
+  }
+
+  .c_intro a{
+    font: 0.5rem;
+  }
+}

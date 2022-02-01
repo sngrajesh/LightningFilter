@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link crossorigin="anonymous" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="icon" href="./src/editorlogo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="./src/style/style.css" />
+  <link rel="stylesheet" href="./src/style/aboutAndContact.css" />
+
+
+
+  <title>Lightning Filter</title>
+</head>
+
+<body>
+  <div class="sidebar close">
+    <div class="logo-details">
+      <img src="./src/editorlogo.png" alt="logo" class="editorlogo" />
+      <span class="logo_name">Lightning Filter</span>
+    </div>
+    <ul class="nav-links">
+
+
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class="bx bx-filter"></i>
+            <span class="link_name">Tools</span>
+          </a>
+          <i class="bx bxs-chevron-down arrow"></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Tools</a></li>
+          <li onclick="flipVertically()"><a href="#">Flip Horizontally</a></li>
+          <li onclick="flipHorizontally()"><a href="#">Flip Vertical</a></li>
+
+        </ul>
+      </li>
+
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class="bx bx-collection"></i>
+            <span class="link_name">Filters</span>
+          </a>
+          <i class="bx bxs-chevron-down arrow"></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Filters</a></li>
+          <li onclick="makeGrayScale()"><a href="#">Grayscale</a></li>
+          <li onclick="makeBright()"><a href="#">Brighter</a></li>
+          <li onclick="makeDark()"><a href="#">Darken</a></li>
+          <li onclick="makeBlur()"><a href="#">Blur</a></li>
+          <li onclick="makeSharp()"><a href="#">Sharp</a></li>
+          <li onclick="makeEmboss()"><a href="#">Emboss</a></li>
+
+
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class="bx bx-compass"></i>
+            <span class="link_name">Explore</span>
+          </a>
+          <i class="bx bxs-chevron-down arrow"></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Explore </a></li>
+          <li>
+            <a href="https://gitrajeshsingh.github.io/LightningQR/" target="blank">Lightning QR</a>
+          </li>
+          <li>
+            <a href="https://gitrajeshsingh.github.io/ToDoExtension/" target="blank">To-Do</a>
+          </li>
+          <li>
+            <a href="https://gitrajeshsingh.github.io/Vocal/" target="blank">Vocals</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" onclick="aboutToggle()">
+          <i class="bx bx-user"></i>
+          <span class="link_name">About</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">About</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" onclick="contactToggle()">
+          <i class="bx bx-phone"></i>
+          <span class="link_name">Contact</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Contact</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" onclick="infoToggle()">
+          <i class="bx bx-info-square"></i>
+          <span class="link_name">Info</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Info</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class="bx bx-download"></i>
+          <span class="link_name">
+            <button class="custom-r" id="download-button" onclick="download()">Download</button>
+          </span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Download</a></li>
+        </ul>
+      </li>
+
+
+      <li>
+        <a href="#">
+          <i class="bx bx-fullscreen" id="fcIcon"></i>
+          <span class="link_name">
+            <button class="custom-r" id="fullscreenButton">Fullscreen</button>
+          </span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Fullscreen</a></li>
+        </ul>
+      </li>
+      <li></li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <div class="home-content">
+      <i class="bx bx-menu menuDiv"></i>
+      <span class="text">More</span>
+      <div class="file-upload-section custom-r" onclick="selectImage()">
+        <input class="url-box" type="file" id="foto-file" />
+        Select File
+
+      </div>
+
+      <div id="color-preview"></div>
+    </div>
+    <div class="paragraph">
+      <h2>Welcome To Lightning Filter</h2>
+    </div>
+
+    <div class="editorContainer">
+      <div id="img-container">
+        <img id="foto-image" class="image anmation" />
+      </div>
+
+
+
+      <div class="button-section">
+        <div class="center-slider">
+          <label type="button" for="rotate-range">Rotate</label>
+          <input type="range" id="rotate-range" class="slider" value="0" min="0" max="360" onchange="rotate(this)">
+
+        </div>
+
+
+        <div class="button-section-2">
+
+
+          <div>
+            <label onclick="crop()" class="custom-r">Crop</label>
+          </div>
+          <div>
+            <input type="color" id="color-picker" value="#000000" oninput="makeColorize(this)">
+            <label onclick="openColorpicker()" for="color-picker" class="custom-r">Colorize</label>
+          </div>
+
+          <div>
+            <input type="color" id="colorize-color-picker" value="#000000" oninput="applyColorFilter(this)">
+            <label onclick="openColorizeColorpicker()" class="custom-r">Color Filter</label>
+          </div>
+
+
+          <div>
+            <label onclick="makeTransparent()" class="custom-r">
+              Transparent
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <div>
+
+      </div>
+    </div>
+
+
+
+  </section>
+
+
+
+  <div class="info" id="info">
+    <h2 class="aboutus-title">Crop</h2>
+    <div class="aboutus-text">Double click and Drag</div>
+    <h2 class="aboutus-title">Transparent</h2>
+    <div class="aboutus-text">Ctrl + Left Click</div>
+    <button class="custom-r" onclick="infoToggle()">Close</button>
+
+  </div>
+
+  <div class="about " id="about">
+    <div class="aboutus-section-inner">
+      <div class="row">
+
+        <div class="aboutus">
+          <h2 class="aboutus-title">About Us</h2>
+          <p class="aboutus-text">
+            Lightning Filter is a free and fast Online Photo Editor.
+          </p>
+          <p class="aboutus-text">
+            We may change the features of our website or  <br> withdraw or add new features form time to time.
+          </p>
+          <button class="custom-r" onclick="aboutToggle()">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="contact " id="contact">
+    <div class="aboutus-section-inner">
+      <div class="row">
+
+        <div class="aboutus">
+          <h2 class="aboutus-title">Contact</h2>
+          <p class="aboutus-text">
+            Contact us on the links given below
+          </p>
+        </div>
+        <div class="c_content">
+          <h2 class="c_intro">
+            <svg aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24"
+              preserveAspectRatio="xMidYMid meet">
+              <path
+                d="M20 18h-2V9.25L12 13L6 9.25V18H4V6h1.2l6.8 4.25L18.8 6H20m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"
+                fill="currentColor" />
+            </svg>
+            <a href="mailto:rajeshnksingh@gmail.com" target="_blank">rajeshnksingh</a>
+          </h2>
+
+          <br />
+
+          <h2 class="c_intro">
+            <svg aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24"
+              preserveAspectRatio="xMidYMid meet">
+              <path
+                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"
+                fill="currentColor" />
+            </svg>
+            <a href="https://www.linkedin.com/in/rajeshnksingh" target="_blank">Rajesh Singh</a>
+          </h2>
+          <br />
+
+          <h2 class="c_intro">
+            <svg aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 32 32"
+              preserveAspectRatio="xMidYMid meet">
+              <path
+                d="M16 2a14 14 0 0 0-4.43 27.28c.7.13 1-.3 1-.67v-2.38c-3.89.84-4.71-1.88-4.71-1.88a3.71 3.71 0 0 0-1.62-2.05c-1.27-.86.1-.85.1-.85a2.94 2.94 0 0 1 2.14 1.45a3 3 0 0 0 4.08 1.16a2.93 2.93 0 0 1 .88-1.87c-3.1-.36-6.37-1.56-6.37-6.92a5.4 5.4 0 0 1 1.44-3.76a5 5 0 0 1 .14-3.7s1.17-.38 3.85 1.43a13.3 13.3 0 0 1 7 0c2.67-1.81 3.84-1.43 3.84-1.43a5 5 0 0 1 .14 3.7a5.4 5.4 0 0 1 1.44 3.76c0 5.38-3.27 6.56-6.39 6.91a3.33 3.33 0 0 1 .95 2.59v3.84c0 .46.25.81 1 .67A14 14 0 0 0 16 2z"
+                fill-rule="evenodd" fill="currentColor" />
+            </svg>
+            <a href="https://github.com/GitRajeshSingh" target="_blank">GitRajesSingh</a>
+          </h2>
+          </h2>
+
+          <br />
+          <h2 class="c_intro">
+            <svg aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 24 24">
+              <path
+                d="M19 2H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4l2.29 2.29c.39.39 1.02.39 1.41 0L15 20h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 3.3c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7S9.3 9.49 9.3 8s1.21-2.7 2.7-2.7zM18 16H6v-.9c0-2 4-3.1 6-3.1s6 1.1 6 3.1v.9z"
+                fill="currentColor" />
+            </svg>
+            <a href="#" target="_blank">Rajesh Singh</a>
+          </h2>
+
+          <br />
+          <button class="custom-r" onclick="contactToggle()">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+  </div>
+  <script src="./src/script/photo.min.js"></script>
+  <script src="./src/script/script.js"></script>
+  <script src="./src/script/download.js"></script>
+
+</body>
+
+</html>
